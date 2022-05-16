@@ -4,6 +4,9 @@ import { Link } from 'vtex.render-runtime'
 import { useCssHandles, applyModifiers } from 'vtex.css-handles'
 import { IconCaret, IconHome } from 'vtex.store-icons'
 import { useDevice } from 'vtex.device-detector'
+import { useIntl } from 'react-intl'
+
+import { breadcumbMessages } from '../constants/messages'
 
 const CSS_HANDLES = [
   'container',
@@ -71,6 +74,7 @@ const Breadcrumb: React.FC<Props> = ({
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
+  const { formatMessage } = useIntl()
   const navigationList = useMemo(
     () => breadcrumb ?? categoryTree ?? getCategoriesList(categories),
     [breadcrumb, categories, categoryTree]
@@ -89,6 +93,7 @@ const Breadcrumb: React.FC<Props> = ({
         className={`${handles.link} ${handles.homeLink} ${linkBaseClasses} v-mid`}
         page="store.home"
       >
+        {formatMessage(breadcumbMessages.homeLink)}
         <IconHome size={homeIconSize} />
       </Link>
       {navigationList.map(({ name, href }, i) => {

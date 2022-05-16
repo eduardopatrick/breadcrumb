@@ -32,5 +32,8 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "typescript": "^3.9.6"
+  },
+  "dependencies": {
+    "react-intl": "^5.25.1"
   }
 }

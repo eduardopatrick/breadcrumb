@@ -74,7 +74,7 @@ const Breadcrumb: React.FC<Props> = ({
 }) => {
   const handles = useCssHandles(CSS_HANDLES)
   const { isMobile } = useDevice()
-  const { formatMessage } = useIntl()
+  const intl = useIntl()
   const navigationList = useMemo(
     () => breadcrumb ?? categoryTree ?? getCategoriesList(categories),
     [breadcrumb, categories, categoryTree]
@@ -93,7 +93,7 @@ const Breadcrumb: React.FC<Props> = ({
         className={`${handles.link} ${handles.homeLink} ${linkBaseClasses} v-mid`}
         page="store.home"
       >
-        {formatMessage(breadcumbMessages.homeLink)}
+        {intl.formatMessage(breadcumbMessages.homeLink)}
         <IconHome size={homeIconSize} />
       </Link>
       {navigationList.map(({ name, href }, i) => {
